@@ -1,0 +1,89 @@
+.dFlex{
+    display: flex;
+    gap: 2px;
+}
+.alignCenter{
+    align-items: center;
+}
+.justifyCenter{
+    justify-content: center;
+}
+.justifyStart{
+    justify-items: flex-start;
+}
+.justifyEnd{
+    justify-items: flex-end;
+}
+
+.title_card{
+    align-items: center;
+    justify-content: space-between;
+    background-color: lightgray;
+}
+.button{
+    background-color: blue;
+    color: white;
+    margin-right: 25px;
+}
+.map-form{
+    flex-direction: column;
+    width: 150px;
+}
+.map{
+    /* background-color: black; */
+    width: fit-content;
+}
+.row{
+    height: 25px;
+
+    gap: 0px;
+}
+.alert{
+    color: darkred;
+    background-color: pink;
+}
+
+.map_info{
+    display: flex;
+}
+.single_map{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    border: 2px solid black;
+    padding-bottom: 5px;
+    margin: 5px;
+}
+.nothing{
+    background-color: black;
+    width: fit-content;
+}
+.forest{
+    background-image: url("forest.png");
+    width: fit-content;
+}
+.cave{
+    background-image: url("cave.jpg");
+    width: fit-content;
+}
+.town{
+    background-image: url("town.jpg");
+    width: fit-content;
+}
+/* Empty space used to fill room */
+/* These are what are used to determine rooms */
+/* Change the empty space class to change what is being used as empty space */
+/* Change the full space tile to determine what is considered a "room" tile */
+.empty-space{
+    width: 25px;
+    height: 25px;
+    /* background-color: black; */
+}
+.full-space{
+    width: 23px;
+    height: 23px;
+    border: 1px solid black;
+    background-color: white;
+    opacity: 75%;
+}

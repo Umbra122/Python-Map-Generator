@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='map-style.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div>
+        <h1>Welcome {{session['name']}}</h1>
+    </div>
+
+    <h3>Here are your saved maps: </h3>
+    <div class="map_info">
+        {% for map in maps %}
+            <div class="single_map">
+                <p>Theme: {{map.map_theme}}</p>
+                <p>Style: {{map.map_style}}</p>
+                <p>Size: {{map.size_x}} x {{map.size_y}}</p>
+                <form action="/view-map" method="post">
+                    <input type="hidden" name="map_key" value="{{map.map_key}}">
+                    <input type="hidden" name="map_theme" value="{{map.map_theme}}">
+                    <input type="hidden" name="map_style" value="{{map.map_style}}">
+                    <input type="hidden" name="size_x" value="{{map.size_x}}">
+                    <input type="hidden" name="size_y" value="{{map.size_y}}">
+                    <button>View Map</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+    <br>
+    <form action="/">
+        <h3>Genereate a new map</h3>
+        <button>New Map</button>
+    </form>
+    <br>
+    <form action="/logout">
+        <button>Logout</button>
+    </form>
+
+    
+</body>
+</html>

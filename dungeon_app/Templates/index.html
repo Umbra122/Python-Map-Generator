@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='map-style.css') }}">
+    <title>Title Page</title>
+</head>
+<body>
+    <div class="dFlex title_card">
+        <h1 class="justiftyStart">Hello There {{session['name']}}</h1>
+        {% if not (session.get('user_id')) %}
+            <form action="/login-register" >
+                <button class="button">Login or Register</button>
+            </form>
+        {% endif %}
+        {% if (session.get('user_id')) %}
+            <form action="/dashboard" class="">
+                <button class="button">Go to user profile</button>
+            </form>
+            <form action="/logout" class="">
+                <button class="button">Logout</button>
+            </form>
+        {% endif %}
+        
+    </div>
+    <br>
+    {% with messages = get_flashed_messages() %}
+        <!-- declare a variable called messages -->
+            {% if messages %}
+                <!-- check if there are any messages -->
+                {% for message in messages %}
+                <!-- loop through the messages -->
+                <p class="alert">{{message}}</p> <!-- display each message in a paragraph tag -->
+                {% endfor %}
+            {% endif %}
+    {% endwith %}
+    <div class="dFlex justifyCenter">
+        <form action="/generate-map" method="post" class="dFlex map-form">
+            <label for="map_theme">Dungeon Theme:</label>
+            <select name="map_theme" id="">
+                <option value="random">Random</option>
+                <option value="maze">Maze</option>
+                <option value="building">building</option>
+                <option value="town">Random</option>
+            </select>
+            <label for="map_style">Pick your map styling</label>
+            <select name="map_style" id="">
+                <option value="nothing">No style</option>
+                <option value="forest">Forest</option>
+                <option value="cave">Cave</option>
+                <option value="town">Town</option>
+                <option value="castle">Castle</option>
+            </select>
+            <label for="xCol">X:</label>
+            <input type="number" name="xCol">
+            <label for="yCol">Y:</label>
+            <input type="number" name="yCol">
+            <label for="rooms">How many Rooms:</label>
+            <input type="number" name="rooms">
+            <button>Map Testing Area</button>
+        </form>
+    </div>
+</body>
+</html>
